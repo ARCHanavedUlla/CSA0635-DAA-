@@ -1,0 +1,22 @@
+def minSwapCost(basket1, basket2):
+    n = len(basket1)
+    total_cost = 0
+
+    for i in range(n):
+        total_cost += min(basket1[i], basket2[i])
+
+    return total_cost
+
+def makeBasketsEqual(basket1, basket2):
+    cost1 = minSwapCost(basket1, basket2)
+    cost2 = minSwapCost(basket2, basket1)
+
+    if cost1 != cost2:
+        return min(cost1, cost2)
+    else:
+        return -1
+
+basket1 = [1, 4, 2, 3]
+basket2 = [2, 1, 4, 2]
+result = makeBasketsEqual(basket1, basket2)
+print("Minimum cost to make both baskets equal:", result)
