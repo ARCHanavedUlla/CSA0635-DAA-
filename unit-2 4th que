@@ -1,0 +1,20 @@
+def findMovesToEqualize(machines):
+    total_dresses = sum(machines)
+    n = len(machines)
+
+    if total_dresses % n != 0:
+        return -1
+
+    target_dresses = total_dresses // n
+    moves = 0
+    imbalance = 0
+
+    for dresses in machines:
+        imbalance += dresses - target_dresses
+        moves = max(moves, abs(imbalance), dresses - target_dresses)
+
+    return moves
+
+machines = [1, 0, 5]
+result = findMovesToEqualize(machines)
+print("Minimum moves to equalize dresses:", result)
