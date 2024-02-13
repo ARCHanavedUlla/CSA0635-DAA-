@@ -1,0 +1,31 @@
+def maxNiceDivisors(primeFactors):
+    MOD = 10**9 + 7
+
+    if primeFactors <= 3:
+        return primeFactors
+    def power(x, y):
+        if y == 0:
+            return 1
+        temp = power(x, y // 2)
+        if y % 2 == 0:
+            return (temp * temp) % MOD
+        else:
+            return (x * temp * temp) % MOD
+
+
+    quotient, remainder = divmod(primeFactors, 3)
+
+
+    if remainder == 0:
+        return power(3, quotient) % MOD
+
+
+    elif remainder == 1:
+        return (4 * power(3, quotient - 1)) % MOD
+
+
+    else:
+        return (2 * power(3, quotient)) % MOD
+
+primeFactors = 5
+print("Number of nice divisors:", maxNiceDivisors(primeFactors))
