@@ -1,4 +1,4 @@
-def reverse_number(num, rev=0if num == 0:
+def reverse_number(num, rev=0if num == ):
         return rev
     
     digit = num % 10
